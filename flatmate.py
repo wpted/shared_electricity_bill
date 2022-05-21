@@ -10,15 +10,13 @@ class Flatmate:
         self.name = name
         self.days_in_house = days_in_house
 
-    def pays(self, bill: Bill, *args) -> float:
+    def pays(self, bill: Bill, flatmate_list: list) -> float:
         """
         Returns the weighted amount a person has to pay.
         :param bill: A Bill object
-        :param args: A list of Flatmate objects.
+        :param flatmate_list: A list of Flatmate objects.
         :return: float
         """
-        total_amount_of_days = self.days_in_house
-        for flatmate in args:
-            total_amount_of_days += flatmate.days_in_house
-        weight = self.days_in_house / total_amount_of_days
-        return bill.amount * weight
+        all_flatmate_days_in_house = [flatmate.days_in_house for flatmate in flatmate_list]
+        weight = self.days_in_house / sum(all_flatmate_days_in_house)
+        return round(bill.amount * weight, 2)
