@@ -42,6 +42,6 @@ class PDFReport:
             pdf.cell(w=150, h=40, ln=1, txt=str(flatmate.pays(bill, flatmate_list)))
 
         pdf.output(self.filename)
-        webbrowser.open("file://" + os.path.realpath("bill.pdf"))
+        webbrowser.open("file://" + os.path.realpath(self.filename))
 
 
