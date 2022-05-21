@@ -23,7 +23,7 @@ class PDFReport:
         pdf.add_page()
 
         # Add Icon
-        pdf.image(name="house_icon.png", w=40, h=40)
+        pdf.image(name="static/house_icon.png", w=40, h=40)
 
         # Insert title
         pdf.set_font(family="Courier", size=24, style="B")
@@ -41,6 +41,8 @@ class PDFReport:
             pdf.cell(w=100, h=40, txt=flatmate.name)
             pdf.cell(w=150, h=40, ln=1, txt=str(flatmate.pays(bill, flatmate_list)))
 
+        # Change directory to output_files
+        os.chdir("output_files")
         pdf.output(self.filename)
         webbrowser.open("file://" + os.path.realpath(self.filename))
 
