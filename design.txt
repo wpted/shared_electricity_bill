@@ -1,0 +1,13 @@
+Title: Split Bill
+Description: An app that splits the electricity bill in a certain period.
+
+Inputs: bill, a certain month, name, days stayed.
+Output: A text showing the shared bill, and an url for the pdf.
+
+Objects:
+Bill:
+attribute: amount, period
+Flatmate:
+attribute: name, days_in_house, pays(bill, days_in_house)
+PDFReport:
+attribute: filename, generate(*flatmate, bill)
